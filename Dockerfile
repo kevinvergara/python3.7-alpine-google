@@ -9,6 +9,6 @@ RUN set -eux \
   && apk add --no-cache --virtual .build-deps build-base \
      libressl-dev libffi-dev gcc musl-dev python3-dev \
      libc-dev libxslt-dev libxml2-dev libc6-compat bash \
-  && pip install --upgrade pip setuptools wheel google-cloud-pubsub grpcio-tools
+  && pip install --upgrade pip setuptools wheel grpcio grpcio-tools
 
 CMD [ "python3" ]
