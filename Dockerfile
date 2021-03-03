@@ -9,6 +9,13 @@ RUN set -eux \
   && apk add --no-cache --virtual .build-deps build-base \
      libressl-dev libffi-dev gcc musl-dev python3-dev \
      libc-dev libxslt-dev libxml2-dev libc6-compat bash \
-  && pip install --upgrade pip setuptools wheel grpcio grpcio-tools
+  && pip install --upgrade pip setuptools
+  
+WORKDIR /app
+
+COPY ./requirements.txt /app/requirements.txt
+
+RUN pip install -r /app/requirements.txt \
+  && rm -rf /root/.cache/pip
 
 CMD [ "python3" ]
